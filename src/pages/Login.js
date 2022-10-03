@@ -17,13 +17,18 @@ import loginLogo from "../images/login.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import api from "../restapi/api";
+// import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 
 function Login(props) {
   const [users, setUsers] = useState([]);
 
-  const fetchUsers = async () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const fetchUsers = async (e) => {
+    e.preventDefault();
     let response = await api.get("users.php");
 
     setUsers(response.data);
@@ -36,6 +41,18 @@ function Login(props) {
     onOpen: onOpen1,
     onClose: onClose1,
   } = useDisclosure();
+
+  const login = async (e) => {
+    e.preventDefault();
+    let response = await api.post("login.php", {
+      email: email,
+      password: password,
+    });
+
+    if (response) {
+      console.log(response.data);
+    }
+  };
 
   return (
     <div>
@@ -62,11 +79,27 @@ function Login(props) {
               </Text>
               <Box mb={3}>
                 <Text>Username</Text>
-                <Input type="email" bg="white" size="sm" required />
+                <Input
+                  type="email"
+                  bg="white"
+                  size="sm"
+                  required
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
               </Box>
 
               <Text>Password</Text>
-              <Input type="password" bg="white" size="sm" required />
+              <Input
+                type="password"
+                bg="white"
+                size="sm"
+                required
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
               <Link href="/signup" fontSize="xs" float="left" mt={1}>
                 Create Account
               </Link>
@@ -79,7 +112,7 @@ function Login(props) {
                   colorScheme="teal"
                   mt={10}
                   w="100%"
-                  onClick={onOpen}
+                  onClick={login}
                   borderRadius="full"
                 >
                   LOGIN
@@ -130,10 +163,7 @@ function Login(props) {
           </tr>
         </thead>
 
-        <tbody>
-          {/* {JSON.stringify(users)} */}
-          {users.length === 0 ? "No data available" : "Yes"}
-        </tbody>
+        <tbody></tbody>
       </table>
 
       {/* <Modal isOpen={isOpen} onClose={onClose}>
