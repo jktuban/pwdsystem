@@ -15,7 +15,7 @@ import {
 import { AiFillEdit } from "react-icons/ai";
 import { BiShow } from "react-icons/bi";
 
-function admincompany() {
+function AdminPwdComponents() {
   return (
     <div>
       <TableContainer w="100%" mr="10px">
@@ -100,4 +100,4 @@ function admincompany() {
   );
 }
 
-export default admincompany;
+export default AdminPwdComponents;

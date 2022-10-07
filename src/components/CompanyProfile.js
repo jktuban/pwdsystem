@@ -36,12 +36,13 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { BsSun, BsMoonStarsFill } from "react-icons/bs";
-import Footer from "../components/Footer";
+import Footer from "./Footer";
 import { SmallCloseIcon } from "@chakra-ui/icons";
 import "../css/navbar.css";
 import Body_Jobpost from "./Body_Jobpost";
+import kcc from "../images/kcc.png";
 
-function PwdProfile(props) {
+function CompanyProfile(props) {
   const { isOpen: isOpen, onOpen: onOpen, onClose: onClose } = useDisclosure();
   const {
     isOpen: isOpen1,
@@ -98,16 +99,30 @@ function PwdProfile(props) {
           lineHeight={1.1}
           fontSize={{ base: "2xl", sm: "3xl" }}
         >
-          My Profile
+          Company Profile
         </Heading>
         <FormControl id="userName">
           <FormLabel></FormLabel>
           <Flex pl="20" direction={["column", "row"]} spacing={6}>
             <Center>
               <Avatar
-                size="2xl"
-                src="https://scontent.fmnl8-3.fna.fbcdn.net/v/t39.30808-6/301128542_3292773417674320_4769438194347416596_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Daj5ssdBjmEAX9AeJLP&_nc_ht=scontent.fmnl8-3.fna&oh=00_AT-2vBziMe_nxjqjv7uoUI0xLreSJD-aVX1R6Ik8T8RX-A&oe=634432AE"
-              ></Avatar>
+                size={"xxl"}
+                src={kcc}
+                alt={"Avatar Alt"}
+                mb={4}
+                pos={"relative"}
+                _after={{
+                  content: '""',
+                  w: 4,
+                  h: 4,
+                  bg: "green.300",
+                  border: "2px solid white",
+                  rounded: "full",
+                  pos: "absolute",
+                  bottom: 0,
+                  right: 3,
+                }}
+              />
             </Center>
             <Spacer />
 
@@ -115,19 +130,13 @@ function PwdProfile(props) {
               <Divider />
               <FormControl id="userName">
                 <FormLabel>
-                  Name:{" "}
+                  Name:
                   <Text lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-                    Tuban, James Karl, C.
+                    KCC MALL ZAMBOANGA
                   </Text>
                 </FormLabel>
+
                 <FormLabel>
-                  Age:
-                  <Text lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-                    20
-                  </Text>
-                </FormLabel>
-                <FormLabel>
-                  {" "}
                   Address:
                   <Text lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
                     Guiwan, Zamboanga City.
@@ -144,7 +153,7 @@ function PwdProfile(props) {
                   }}
                   onClick={onOpen}
                 >
-                  Available Job
+                  JOB POST
                 </Button>
 
                 <Divider />
@@ -198,7 +207,7 @@ function PwdProfile(props) {
           }}
           onClick={onOpen1}
         >
-          Documents
+          Applicants
         </Button>
         <FormControl>
           <Divider />
@@ -254,10 +263,17 @@ function PwdProfile(props) {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>My Job Available</DrawerHeader>
+          <DrawerHeader>
+            <Button colorScheme="teal" variant="outline">
+              Add Job Post
+            </Button>
+          </DrawerHeader>
 
           <DrawerBody>
             <Input placeholder="Type here..." />
+            <Text lineHeight={1.1} fontSize={{ base: "2xl", xl: "3xl" }}>
+              JOB POST LIST
+            </Text>
             <Body_Jobpost />
           </DrawerBody>
 
@@ -265,7 +281,10 @@ function PwdProfile(props) {
             <Button variant="outline" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme="blue">Save</Button>
+            <Button bg="red.300" mr={3}>
+              Edit
+            </Button>
+            <Button bg="blue.500">Save</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
@@ -274,7 +293,7 @@ function PwdProfile(props) {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader borderBottomWidth="1px">
-            My Documents
+            Applicants
             <Button
               colorScheme="teal"
               variant="outline"
@@ -286,27 +305,45 @@ function PwdProfile(props) {
           </DrawerHeader>
           <DrawerBody>
             <VStack>
-              <Image
-                src="gibbresh.png"
-                fallbackSrc="https://via.placeholder.com/150"
-              />
-              <Checkbox defaultChecked value="Resume">
-                Resume
-              </Checkbox>
-              <Image
-                src="gibbresh.png"
-                fallbackSrc="https://via.placeholder.com/150"
-              />
-              <Checkbox defaultChecked value="CV">
-                CV
-              </Checkbox>
-              <Image
-                src="gibbresh.png"
-                fallbackSrc="https://via.placeholder.com/150"
-              />
-              <Checkbox defaultChecked value="Cert">
-                Certivficattes
-              </Checkbox>
+              <HStack>
+                <Badge
+                  py={1}
+                  bg={useColorModeValue("gray.50", "gray.800")}
+                  fontWeight={"400"}
+                  w="100%"
+                >
+                  Name: James Tuban
+                  <Button ml="100px" colorScheme="blue">
+                    View
+                  </Button>
+                </Badge>
+              </HStack>
+              <HStack>
+                <Badge
+                  py={1}
+                  bg={useColorModeValue("gray.50", "gray.800")}
+                  fontWeight={"400"}
+                  w="100%"
+                >
+                  Name: James Tuban
+                  <Button ml="100px" colorScheme="blue">
+                    View
+                  </Button>
+                </Badge>
+              </HStack>
+              <HStack>
+                <Badge
+                  py={1}
+                  bg={useColorModeValue("gray.50", "gray.800")}
+                  fontWeight={"400"}
+                  w="100%"
+                >
+                  Name: James Tuban
+                  <Button ml="100px" colorScheme="blue">
+                    View
+                  </Button>
+                </Badge>
+              </HStack>
             </VStack>
           </DrawerBody>
           <DrawerFooter>
@@ -320,4 +357,4 @@ function PwdProfile(props) {
     </div>
   );
 }
-export default PwdProfile;
+export default CompanyProfile;

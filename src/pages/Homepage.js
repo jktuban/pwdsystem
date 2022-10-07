@@ -25,13 +25,20 @@ import {
   Input,
   Wrap,
   WrapItem,
+  AspectRatio,
+  toggleColorMode,
+  colorMode,
+  useColorMode,
 } from "@chakra-ui/react";
+import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 import "../css/navbar.css";
 import Body_Jobpost from "../components/Body_Jobpost";
 import Footer from "../components/Footer";
 import Contact from "../components/Contact";
 
 function Homepage(props) {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bgcolor = useColorModeValue("teal", "whiteAlpha.50");
   const [data, setData] = useState([
     { title: "Sales Lady", company: "KCC Mall de Zamboanga" },
     { title: "Cashier", company: "SM Mindpro" },
@@ -44,7 +51,7 @@ function Homepage(props) {
         className="header"
         position="fixed"
         w="100%"
-        bg="#008374"
+        bg={bgcolor}
         height="60px"
         minH={"60px"}
         px={20}
@@ -52,6 +59,15 @@ function Homepage(props) {
         p="6"
         pb="10"
       >
+        <Button
+          aria-label="Toggle Color Mode"
+          onClick={toggleColorMode}
+          _focus={{ boxShadow: "none" }}
+          w="fit-content"
+          {...props}
+        >
+          {colorMode === "light" ? <BsMoonStarsFill /> : <BsSun />}
+        </Button>
         <Text fontSize="xl" color="white" ml="10px" pl="50px">
           DSWD-PWD.
         </Text>
@@ -74,7 +90,7 @@ function Homepage(props) {
         </Box>
       </Flex>
 
-      <Container maxW={"100%"} bg="#008374">
+      <Container bg={bgcolor} maxW={"100%"}>
         <Stack
           align={"center"}
           spacing={{ base: 8, md: 10 }}
@@ -95,7 +111,7 @@ function Homepage(props) {
                 Job Hunting!
               </Text>
             </Heading>
-            <Text color={"white"} ml="10%" pl={"60px"}>
+            <Text ml="10%" pl={"60px"}>
               PWD Job Hunting!! PWD Job Hunting!!PWD Job Hunting!!PWD Job
               Hunting!!PWD Job Hunting!!PWD Job Hunting!!PWD Job Hunting!!PWD
               Job Hunting!!PWD Job Hunting!!PWD Job Hunting!!PWD Job
@@ -140,12 +156,19 @@ function Homepage(props) {
             w={"full"}
           >
             <Box
-              height={"300px"}
               rounded={"2xl"}
               boxShadow={"2xl"}
               width={"full"}
               overflow={"hidden"}
-            ></Box>
+            >
+              <AspectRatio maxW="full" ratio={4 / 2}>
+                <iframe
+                  title="Tutorial"
+                  src="https://youtu.be/mtixdJuLuRI"
+                  allowFullScreen
+                />
+              </AspectRatio>
+            </Box>
           </Flex>
         </Stack>
       </Container>
@@ -164,7 +187,7 @@ function Homepage(props) {
             </Text>
             <Wrap>
               <Box>
-                <Select shadow="2xl" bg="white" placeholder="Job type" w="*px">
+                <Select shadow="2xl" placeholder="Job type" w="*px">
                   <ption value="option1">Full type</ption>
                   <option value="option2">Contract</option>
                   <option value="option3">Permanent</option>
@@ -172,7 +195,7 @@ function Homepage(props) {
                 </Select>
               </Box>
               <Box>
-                <Select bg="white" placeholder="Company" w="*px">
+                <Select placeholder="Company" w="*px">
                   <option value="option1">Option 1</option>
                   <option value="option2">Option 2</option>
                   <option value="option3">Option 3</option>

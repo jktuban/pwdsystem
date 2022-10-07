@@ -17,13 +17,12 @@ import loginLogo from "../images/login.png";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import api from "../restapi/api";
-// import axios from "axios";
+//import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 
 function Login(props) {
   const [users, setUsers] = useState([]);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

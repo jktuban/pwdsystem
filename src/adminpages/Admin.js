@@ -1,9 +1,8 @@
 import Sidebar from "../components/Sidebar";
 import { Flex, Text, Box, Link, IconButton, VStack } from "@chakra-ui/react";
-import { FiMenu } from "react-icons/fi";
+
 import AddJobPost from "../components/AddJobPost";
-import AdminCompany from "../components/AdminCompany";
-import Footer from "../components/Footer";
+import AdminCompanyComponents from "../components/AdminCompanyComponents";
 
 export default function Home() {
   return (
@@ -15,7 +14,7 @@ export default function Home() {
             <AddJobPost />
           </Flex>
           <Flex>
-            <AdminCompany />
+            <AdminCompanyComponents />
           </Flex>
         </VStack>
       </Flex>

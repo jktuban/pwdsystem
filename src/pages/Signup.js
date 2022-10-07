@@ -25,24 +25,35 @@ import {
   InputGroup,
   Checkbox,
   CheckboxGroup,
+  colorMode,
+  Spacer,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
-export default function Home() {
+export default function Home(props) {
   const [showPassword, setShowPassword] = useState(false);
-
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bgcolor = useColorModeValue("teal.400", "whiteAlpha.50");
+  const fontcolor = useColorModeValue("gray.50", "white");
   return (
     <div>
       <center>
         <box>
           <Tabs isFitted variant="enclosed" width="80%" mt="100px">
-            <TabList mb="0em">
-              <Tab bg="#f3f4f5">Step 1 Profile</Tab>
-              <Tab>Step 2 Disability</Tab>
-              <Tab>Step 3 Skills</Tab>
+            <TabList>
+              <Tab bg={bgcolor}>
+                <Text color={fontcolor}>Step 1 Profile</Text>
+              </Tab>
+              <Tab bg={bgcolor}>
+                <Text color={fontcolor}>Step 2 Disability</Text>
+              </Tab>
+              <Tab bg={bgcolor}>
+                <Text color={fontcolor}>Step 3 Skills</Text>
+              </Tab>
             </TabList>
-            <TabPanels bg="f3f4f5">
+            <TabPanels>
               <TabPanel>
                 <Flex
                   minH={"100vh"}
@@ -60,6 +71,20 @@ export default function Home() {
                         able to create additional information after registering
                         ✌️
                       </Text>
+
+                      <Button
+                        aria-label="Toggle Color Mode"
+                        onClick={toggleColorMode}
+                        _focus={{ boxShadow: "none" }}
+                        w="fit-content"
+                        {...props}
+                      >
+                        {colorMode === "light" ? (
+                          <BsMoonStarsFill />
+                        ) : (
+                          <BsSun />
+                        )}
+                      </Button>
                     </Stack>
                     <Box
                       width="100%"
@@ -144,7 +169,7 @@ export default function Home() {
                   justify={"center"}
                   bg={useColorModeValue("gray.50", "gray.800")}
                 >
-                  <Stack spacing={10} mx={"auto"} width="100%">
+                  <Stack spacing={10} mx={"auto"} width="100%" py={12} px={6}>
                     <Stack align={"center"} w="100%">
                       <Heading fontSize={"4xl"} textAlign={"center"}>
                         Disability
@@ -154,6 +179,19 @@ export default function Home() {
                         able to create additional information after registering
                         ✌️
                       </Text>
+                      <Button
+                        aria-label="Toggle Color Mode"
+                        onClick={toggleColorMode}
+                        _focus={{ boxShadow: "none" }}
+                        w="fit-content"
+                        {...props}
+                      >
+                        {colorMode === "light" ? (
+                          <BsMoonStarsFill />
+                        ) : (
+                          <BsSun />
+                        )}
+                      </Button>
                     </Stack>
                     <Box
                       width="100%"
@@ -165,8 +203,8 @@ export default function Home() {
                       <Stack spacing={4}>
                         <HStack>
                           <Box>
-                            <FormControl id="firstName" isRequired pt="20px">
-                              <FormLabel>Last Name</FormLabel>
+                            <FormControl id="Disability" isRequired pt="20px">
+                              <FormLabel>Type of Disability</FormLabel>
                               <CheckboxGroup colorScheme="green">
                                 <Stack
                                   spacing={[5, 1]}
@@ -195,7 +233,7 @@ export default function Home() {
                           </Box>
                           <Box>
                             <FormControl id="firstName" isRequired>
-                              <FormLabel>Last Name</FormLabel>
+                              <FormLabel></FormLabel>
                               <CheckboxGroup colorScheme="green">
                                 <Stack
                                   spacing={[5, 1]}
@@ -236,6 +274,27 @@ export default function Home() {
                                   </Checkbox>
                                   <Checkbox value="Down Syndrome">
                                     Down Syndrome{" "}
+                                  </Checkbox>{" "}
+                                </Stack>
+                              </CheckboxGroup>
+                            </FormControl>
+                          </Box>
+                          <Box>
+                            <FormControl id="Conginital/inborn" isRequired>
+                              <FormLabel>Acquired</FormLabel>
+                              <CheckboxGroup colorScheme="green">
+                                <Stack
+                                  spacing={[5, 1]}
+                                  direction={["row", "column"]}
+                                  fontSize={"lg"}
+                                  color={"gray.600"}
+                                >
+                                  <Checkbox value="Injury">Injury</Checkbox>
+                                  <Checkbox value="Cerebral Palsy">
+                                    Cerebral Palsy
+                                  </Checkbox>
+                                  <Checkbox value="Cronic Illness">
+                                    Cronic Illness{" "}
                                   </Checkbox>{" "}
                                 </Stack>
                               </CheckboxGroup>
@@ -291,6 +350,19 @@ export default function Home() {
                         able to create additional information after registering
                         ✌️
                       </Text>
+                      <Button
+                        aria-label="Toggle Color Mode"
+                        onClick={toggleColorMode}
+                        _focus={{ boxShadow: "none" }}
+                        w="fit-content"
+                        {...props}
+                      >
+                        {colorMode === "light" ? (
+                          <BsMoonStarsFill />
+                        ) : (
+                          <BsSun />
+                        )}
+                      </Button>
                     </Stack>
                     <Box
                       width="100%"
@@ -299,85 +371,89 @@ export default function Home() {
                       boxShadow={"lg"}
                       p={8}
                     >
-                      <Stack spacing={4}>
-                        <HStack>
+                      <Flex>
+                        <Stack spacing={4}>
+                          <HStack>
+                            <Box>
+                              <FormControl id="firstName" isRequired pt="20px">
+                                <FormLabel>Soft Skills</FormLabel>
+                                <CheckboxGroup colorScheme="green">
+                                  <Stack
+                                    spacing={[5, 1]}
+                                    direction={["row", "column"]}
+                                    fontSize={"lg"}
+                                    color={"gray.600"}
+                                  >
+                                    <Checkbox value="Intellectual">
+                                      Enter Personal Skills
+                                    </Checkbox>
+                                    <Checkbox value="Learning">
+                                      Communication Skills
+                                    </Checkbox>
+                                    <Checkbox value="Mental">Editing</Checkbox>{" "}
+                                    <Checkbox value="Physical">
+                                      Writing
+                                    </Checkbox>
+                                  </Stack>
+                                </CheckboxGroup>
+                              </FormControl>
+                            </Box>
+                            <Box>
+                              <FormControl id="firstName" isRequired>
+                                <FormLabel>Hard Skills</FormLabel>
+                                <CheckboxGroup colorScheme="green">
+                                  <Stack
+                                    spacing={[5, 1]}
+                                    direction={["row", "column"]}
+                                    fontSize={"lg"}
+                                    color={"gray.600"}
+                                  >
+                                    <Checkbox value="Phycosocial Disability">
+                                      Computer Skills
+                                    </Checkbox>
+                                    <Checkbox value="Speech Disability">
+                                      Administrative Skills
+                                    </Checkbox>
+                                    <Checkbox value="Cancer">
+                                      Customer Service Skills
+                                    </Checkbox>
+                                    <Checkbox value="Rare Disease">
+                                      Skills
+                                    </Checkbox>
+                                  </Stack>
+                                </CheckboxGroup>
+                              </FormControl>
+                            </Box>
+                          </HStack>
                           <Box>
-                            <FormControl id="firstName" isRequired pt="20px">
-                              <FormLabel>Soft Skills</FormLabel>
-                              <CheckboxGroup colorScheme="green">
-                                <Stack
-                                  spacing={[5, 1]}
-                                  direction={["row", "column"]}
-                                  fontSize={"lg"}
-                                  color={"gray.600"}
-                                >
-                                  <Checkbox value="Intellectual">
-                                    Enter Personal Skills
-                                  </Checkbox>
-                                  <Checkbox value="Learning">
-                                    Communication Skills
-                                  </Checkbox>
-                                  <Checkbox value="Mental">Editing</Checkbox>{" "}
-                                  <Checkbox value="Physical">Writing</Checkbox>
-                                </Stack>
-                              </CheckboxGroup>
+                            <FormControl id="Others">
+                              <FormLabel>Others</FormLabel>
+                              <Input type="panel" placeholder="Other" h="200" />
                             </FormControl>
                           </Box>
-                          <Box>
-                            <FormControl id="firstName" isRequired>
-                              <FormLabel>Hard Skills</FormLabel>
-                              <CheckboxGroup colorScheme="green">
-                                <Stack
-                                  spacing={[5, 1]}
-                                  direction={["row", "column"]}
-                                  fontSize={"lg"}
-                                  color={"gray.600"}
-                                >
-                                  <Checkbox value="Phycosocial Disability">
-                                    Computer Skills
-                                  </Checkbox>
-                                  <Checkbox value="Speech Disability">
-                                    Administrative Skills
-                                  </Checkbox>
-                                  <Checkbox value="Cancer">
-                                    Customer Service Skills
-                                  </Checkbox>
-                                  <Checkbox value="Rare Disease">
-                                    Skills
-                                  </Checkbox>{" "}
-                                </Stack>
-                              </CheckboxGroup>
-                            </FormControl>
-                          </Box>
-                        </HStack>
-                        <Box>
-                          <FormControl id="Others">
-                            <FormLabel>Others</FormLabel>
-                            <Input type="panel" placeholder="Other" h="200" />
-                          </FormControl>
-                        </Box>
-                        <Stack spacing={10} pt={2}>
-                          <Button
-                            loadingText="Submitting"
-                            w="50%"
-                            mx="10px"
-                            size="lg"
-                            bg={"blue.400"}
-                            color={"white"}
-                            _hover={{
-                              bg: "blue.500",
-                            }}
-                          >
-                            Submit
-                          </Button>
+                          <Stack spacing={10} pt={2}>
+                            <Button
+                              loadingText="Submitting"
+                              w="50%"
+                              mx="10px"
+                              size="lg"
+                              bg={"blue.400"}
+                              color={"white"}
+                              _hover={{
+                                bg: "blue.500",
+                              }}
+                            >
+                              Submit
+                            </Button>
+                          </Stack>
+                          <Stack pt={6}>
+                            <Text align={"center"}>
+                              Already a user?{" "}
+                              <Link color={"blue.400"}>Login</Link>
+                            </Text>
+                          </Stack>
                         </Stack>
-                        <Stack pt={6}>
-                          <Text align={"center"}>
-                            Already a user?{" "}
-                            <Link color={"blue.400"}>Login</Link>
-                          </Text>
-                        </Stack>
-                      </Stack>
+                      </Flex>
                     </Box>
                   </Stack>
                 </Flex>
