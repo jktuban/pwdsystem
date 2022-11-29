@@ -11,16 +11,31 @@ import {
   GridItem,
   Circle,
   Link,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel,
 } from "@chakra-ui/react";
+
+import GoogleLogin from "react-google-login";
 import "../css/login.css";
+import { gapi } from "gapi-script";
+
 import loginLogo from "../images/login.png";
+import Glogin from "../components/glogin";
+import NewLogin from "../components/NewLogin";
+import glogout from "../components/glogout";
+
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import api from "../restapi/api";
-//import axios from "axios";
+import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 
+const clientId =
+  "463065432871-c6n0ltb05akftuj1m0metquv49cumha5.apps.googleusercontent.com";
 function Login(props) {
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState("");
@@ -53,153 +68,29 @@ function Login(props) {
     }
   };
 
+  // useEffect(() => {
+  //   function start() {
+  //     gapi.client.init({ clientId: clientId, scope: "" });
+  //   }
+  //   gapi.load("client:aunth2", start);
+  // });
+
   return (
     <div>
-      <Grid templateColumns="repeat(5, 1fr)">
-        <GridItem colSpan={3}>
-          <Center>
-            <Box style={{ marginTop: "150px" }}>
-              <Image src={loginLogo} w="400px" />
-            </Box>
-          </Center>
-        </GridItem>
-        <GridItem colSpan={2}>
-          <Box py={10} px={20} className="login-container">
-            <form>
-              <Center>
-                <Circle
-                  size="100px"
-                  bgGradient="linear(to-b, blue.200, teal.200, teal.50)"
-                  color="white"
-                ></Circle>
-              </Center>
-              <Text fontSize="2xl" textAlign="center" my={5}>
-                WELCOME
-              </Text>
-              <Box mb={3}>
-                <Text>Username</Text>
-                <Input
-                  type="email"
-                  bg="white"
-                  size="sm"
-                  required
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </Box>
-
-              <Text>Password</Text>
-              <Input
-                type="password"
-                bg="white"
-                size="sm"
-                required
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              <Link href="/signup" fontSize="xs" float="left" mt={1}>
-                Create Account
-              </Link>
-              <Link fontSize="xs" float="right" mt={1}>
-                Forgot Password?
-              </Link>
-              <Box w="80%" style={{ margin: " 0 auto" }}>
-                <Button
-                  type="submit"
-                  colorScheme="teal"
-                  mt={10}
-                  w="100%"
-                  onClick={login}
-                  borderRadius="full"
-                >
-                  LOGIN
-                </Button>
-                <Button
-                  leftIcon={<FcGoogle />}
-                  variant="outline"
-                  mt={5}
-                  w="100%"
-                  onClick={onOpen1}
-                  colorScheme="red"
-                >
-                  Login with Google
-                </Button>
-                <Button
-                  leftIcon={<FaFacebookF />}
-                  variant="outline"
-                  mt={5}
-                  w="100%"
-                  onClick={onOpen1}
-                  colorScheme="blue"
-                >
-                  Login with Facebook
-                </Button>
-
-                <Button onClick={fetchUsers} colorScheme="blue">
-                  Fetch
-                </Button>
-              </Box>
-
-              {/* <Center mt={10}>
-              <Stack direction="row">
-                <Switch colorScheme="red" />
-                <Switch colorScheme="teal" />
-              </Stack>
-            </Center> */}
-            </form>
-          </Box>
-        </GridItem>
-      </Grid>
-
-      <table>
-        <thead>
-          <tr>
-            <th>User ID</th>
-            <th>Username</th>
-            <th>Password</th>
-          </tr>
-        </thead>
-
-        <tbody></tbody>
-      </table>
-
-      {/* <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Header</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>MODAL</Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="green" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-      <Modal isOpen={isOpen1} onClose={onClose1}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Header111</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text>MODAL1</Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="green" mr={3} onClick={onClose1}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal> */}
+      <Tabs isFitted variant="enclosed">
+        <TabList mb="2em">
+          <Tab>Comapny Register</Tab>
+          <Tab>PWD Register</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <NewLogin />
+          </TabPanel>
+          <TabPanel>
+            <NewLogin />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </div>
   );
 }

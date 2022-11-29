@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {
   Link,
   Box,
@@ -17,15 +18,31 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import kcc from "../images/kcc.png";
+import PopLogin from "../components/PopLogin";
+import { useSpeechSynthesis } from "react-speech-kit";
 
 function Body_Jobpost(props) {
-  const [data, setData] = useState([
-    { title: "Sales Lady", company: "KCC Mall de Zamboanga" },
-    { title: "Cashier", company: "SM Mindpro" },
-  ]);
+  const [user, setUser] = useState([]);
+  const [job, setJob] = useState([]);
+  const { speak } = useSpeechSynthesis();
+  const [Firstname, setFirstname] = useState(
+    "cook chicken nuggetscook chicken nuggetscook chicken"
+  );
+
+  const [fontSize, setFontSize] = useState(16);
+
+  const getJob = () => {
+    axios.get("http://localhost/pwd-backend/get_job.php").then((response) => {
+      setJob(response.data);
+    });
+  };
+
+  useEffect(() => {
+    getJob();
+  }, [job]);
 
   return (
-    <div>
+    <div id="target">
       <VStack>
         <Stack pt="20px" spacing={1}></Stack>
         <Stack>
@@ -42,7 +59,6 @@ function Body_Jobpost(props) {
                 size={"xl"}
                 src={kcc}
                 alt={"Avatar Alt"}
-                mb={4}
                 pos={"relative"}
                 _after={{
                   content: '""',
@@ -56,37 +72,46 @@ function Body_Jobpost(props) {
                   right: 3,
                 }}
               />
-              <Heading fontSize={"2xl"} fontFamily={"body"}>
+              <Heading pt={5} fontFamily={"body"}>
                 {props.title}
+                <Link
+                  onClick={() => speak({ text: Firstname })}
+                  color={"blue.400"}
+                >
+                  🎤
+                </Link>
               </Heading>
-              <Text fontWeight={600} pt="10px" color={"gray.600"} mb={4}>
+              <Text className="content" fontWeight={600} color={"gray.600"}>
                 {props.company}
               </Text>
               <Text
-                textAlign={""}
                 color={useColorModeValue("gray.700", "gray.400")}
-                px={2}
+                className="content"
               >
-                Actress, musician, songwriter and artist. PM for work inquires
-                or Actress, musician, songwriter and artist. PM for work
-                inquires or{" "}
+                {props.description}
                 <Link href={"#"} color={"blue.400"}>
                   #tag
-                </Link>{" "}
+                </Link>
                 me in your posts
                 <br></br>
                 <br></br>
               </Text>
               <Badge
-                px={2}
+                className="content"
                 py={1}
                 bg={useColorModeValue("yellow.400", "yellow.800")}
-                fontWeight={"400"}
+                fontWeight={"800"}
               >
-                15,000 php - 20,000 php / month
+                {props.salary}
               </Badge>
 
-              <Stack align={"left"} justify={"left"} direction={"row"} mt={6}>
+              <Stack
+                className="content"
+                align={"left"}
+                justify={"left"}
+                direction={"row"}
+                mt={6}
+              >
                 <Badge
                   px={2}
                   py={1}
@@ -124,6 +149,7 @@ function Body_Jobpost(props) {
                 >
                   View
                 </Button>
+
                 <Button
                   flex={1}
                   fontSize={"sm"}

@@ -3,6 +3,7 @@ import {
   Flex,
   Text,
   IconButton,
+  Link,
   Divider,
   Avatar,
   Heading,
@@ -44,7 +45,6 @@ export default function Sidebar() {
       >
         <IconButton
           background=""
-          mt={5}
           _hover={{ background: "none" }}
           icon={<FiMenu />}
           onClick={() => {
@@ -53,16 +53,26 @@ export default function Sidebar() {
           }}
         />
 
-        <NavItem
-          navSize={navSize}
-          icon={FiHome}
-          title="Dashboard"
-          description="This is the description for the dashboard."
-        />
-        <NavItem navSize={navSize} icon={FiCalendar} title="Company" />
-        <NavItem navSize={navSize} icon={FiUser} title="PWD" />
-        <NavItem navSize={navSize} icon={FiBriefcase} title="Reports" />
-        <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
+        <Link href="AdminDashboard">
+          <NavItem
+            navSize={navSize}
+            icon={FiHome}
+            title="Dashboard"
+            description="This is the dashboard."
+          />
+        </Link>
+        <Link href="AdminCompany">
+          <NavItem navSize={navSize} icon={FiCalendar} title="Company" />
+        </Link>
+        <Link href="AdminPwd">
+          <NavItem navSize={navSize} icon={FiUser} title="PWD" />
+        </Link>
+        <Link href="AdminReports">
+          <NavItem navSize={navSize} icon={FiBriefcase} title="Reports" />
+        </Link>
+        <Link href="AdminSettings">
+          <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
+        </Link>
       </Flex>
 
       <Flex

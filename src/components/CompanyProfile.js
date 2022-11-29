@@ -40,7 +40,9 @@ import Footer from "./Footer";
 import { SmallCloseIcon } from "@chakra-ui/icons";
 import "../css/navbar.css";
 import Body_Jobpost from "./Body_Jobpost";
+import Addjobpost from "./AddJobPost";
 import kcc from "../images/kcc.png";
+import ViewApplicants from "./ViewApplicants";
 
 function CompanyProfile(props) {
   const { isOpen: isOpen, onOpen: onOpen, onClose: onClose } = useDisclosure();
@@ -56,9 +58,10 @@ function CompanyProfile(props) {
     <div>
       <Flex p="2" minWidth="max-content" alignItems="center" gap="2">
         <Box p="2">
-          <Heading color="teal" size="md">
-            Person with Disability
+          <Heading px={2} color="teal" size="md">
+            PWD DSWD
             <Button
+              mx={2}
               aria-label="Toggle Color Mode"
               onClick={toggleColorMode}
               _focus={{ boxShadow: "none" }}
@@ -103,13 +106,12 @@ function CompanyProfile(props) {
         </Heading>
         <FormControl id="userName">
           <FormLabel></FormLabel>
-          <Flex pl="20" direction={["column", "row"]} spacing={6}>
+          <Flex direction={["column", "row"]} spacing={6}>
             <Center>
               <Avatar
                 size={"xxl"}
                 src={kcc}
                 alt={"Avatar Alt"}
-                mb={4}
                 pos={"relative"}
                 _after={{
                   content: '""',
@@ -126,19 +128,19 @@ function CompanyProfile(props) {
             </Center>
             <Spacer />
 
-            <Box pt="15">
+            <Box pt="50">
               <Divider />
               <FormControl id="userName">
                 <FormLabel>
-                  Name:
-                  <Text lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
+                  Company Representative:
+                  <Text lineHeight={1.1} fontSize={"xl"}>
                     KCC MALL ZAMBOANGA
                   </Text>
                 </FormLabel>
 
                 <FormLabel>
                   Address:
-                  <Text lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
+                  <Text lineHeight={1.1} fontSize={"xl"}>
                     Guiwan, Zamboanga City.
                   </Text>
                 </FormLabel>
@@ -153,7 +155,19 @@ function CompanyProfile(props) {
                   }}
                   onClick={onOpen}
                 >
-                  JOB POST
+                  My JOB POST
+                </Button>
+                <Button
+                  mt={2}
+                  bg={"blue.400"}
+                  color={"white"}
+                  w="full"
+                  _hover={{
+                    bg: "blue.500",
+                  }}
+                  onClick={onOpen1}
+                >
+                  Applicants
                 </Button>
 
                 <Divider />
@@ -163,6 +177,18 @@ function CompanyProfile(props) {
         </FormControl>
         <Center>
           <Text fontStyle={"italic"}>
+            <FormLabel>
+              Company Name:
+              <Text lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
+                KCC MALL ZAMBOANGA
+              </Text>
+            </FormLabel>
+            <FormLabel>
+              Address:
+              <Text lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
+                Guiwan, Zamboanga City.
+              </Text>
+            </FormLabel>
             <Divider />
             Hi, I’m James and I’m a software engineer. My current focus is
             optimizing customer experience. Nice to meet you all. My name is
@@ -198,17 +224,7 @@ function CompanyProfile(props) {
             #music
           </Badge>
         </Flex>
-        <Button
-          bg={"blue.400"}
-          color={"white"}
-          w="full"
-          _hover={{
-            bg: "blue.500",
-          }}
-          onClick={onOpen1}
-        >
-          Applicants
-        </Button>
+
         <FormControl>
           <Divider />
           <FormLabel>My Disability</FormLabel>
@@ -264,9 +280,7 @@ function CompanyProfile(props) {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>
-            <Button colorScheme="teal" variant="outline">
-              Add Job Post
-            </Button>
+            <Addjobpost />
           </DrawerHeader>
 
           <DrawerBody>
@@ -306,51 +320,21 @@ function CompanyProfile(props) {
           <DrawerBody>
             <VStack>
               <HStack>
-                <Badge
-                  py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                  w="100%"
-                >
-                  Name: James Tuban
-                  <Button ml="100px" colorScheme="blue">
-                    View
-                  </Button>
-                </Badge>
+                <Text>Name: James Tuban</Text>
+                <ViewApplicants />
               </HStack>
               <HStack>
-                <Badge
-                  py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                  w="100%"
-                >
-                  Name: James Tuban
-                  <Button ml="100px" colorScheme="blue">
-                    View
-                  </Button>
-                </Badge>
+                <Text>Name: James Tuban</Text>
+                <ViewApplicants />
               </HStack>
               <HStack>
-                <Badge
-                  py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                  w="100%"
-                >
-                  Name: James Tuban
-                  <Button ml="100px" colorScheme="blue">
-                    View
-                  </Button>
-                </Badge>
+                <Text>Name: James Tuban</Text>
+                <ViewApplicants />
               </HStack>
             </VStack>
           </DrawerBody>
           <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
+            <Text>All right reserve</Text>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

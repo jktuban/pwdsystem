@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import {
   Modal,
   ModalOverlay,
@@ -26,6 +27,25 @@ import {
 import kcc from "../images/kcc.png";
 
 function AddJobPost(props) {
+
+  const [TITTLE, setTittle] = useState("");
+  const [DESCRIPTION, setDescription] = useState("");
+  const [SALARY, setSalary] = useState("");
+
+  
+  const addjobpost = () => {
+    // let response = api.post('/insert.php', {email: email, password: password});
+    // console.log(response)
+
+    // REQUEST FOR INSERTION
+    axios.post('http://localhost/pwd-backend/addjobpost.php', {
+        TITTLE:TITTLE, 
+        DESCRIPTION:DESCRIPTION,
+        SALARY:SALARY
+    }).then((response) => {console.log(response.data)});
+}
+
+
   const OverlayOne = () => (
     <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) " />
   );
@@ -46,7 +66,7 @@ function AddJobPost(props) {
       >
         Add Job Post
       </Button>
-      <Button
+      {/* <Button
         ml="4"
         onClick={() => {
           setOverlay(<OverlayTwo />);
@@ -54,7 +74,7 @@ function AddJobPost(props) {
         }}
       >
         Add Job Post
-      </Button>
+      </Button> */}
       <Modal isCentered isOpen={isOpen} size="xl" onClose={onClose}>
         {overlay}
         <ModalContent>
@@ -66,16 +86,19 @@ function AddJobPost(props) {
                 focusBorderColor="Teal"
                 variant="flushed"
                 placeholder="Job Tittle"
+                onChange={(e) => {setTittle(e.target.value)}}
               />
               <Input
                 focusBorderColor="Teal"
                 variant="flushed"
                 placeholder="Description"
+                onChange={(e) => {setDescription(e.target.value)}}
               />
               <Input
                 focusBorderColor="Teal"
                 variant="flushed"
                 placeholder="Requirements"
+                onChange={(e) => {setSalary(e.target.value)}}
               />
               <HStack>
                 <Menu closeOnSelect={false}>
@@ -132,7 +155,7 @@ function AddJobPost(props) {
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
-            <Button colorScheme="teal" ml="20px">
+            <Button colorScheme="teal" ml="20px" onClick={addjobpost}>
               Save
             </Button>
           </ModalFooter>

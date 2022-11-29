@@ -20,13 +20,12 @@ function AdminPwdComponents() {
     <div>
       <TableContainer w="100%" mr="10px">
         <Table variant="striped" colorScheme="teal">
-          <TableCaption>Company Job Post</TableCaption>
+          <TableCaption>PWD Records</TableCaption>
           <Thead>
             <Tr align="center">
-              <Th>Company ID</Th>
-              <Th>Company Name</Th>
-
-              <Th>JOb Title</Th>
+              <Th>PWD ID</Th>
+              <Th>PWD Name</Th>
+              <Th>Job Title</Th>
               <Th>Satatus</Th>
               <Th>Actions</Th>
             </Tr>
@@ -34,7 +33,7 @@ function AdminPwdComponents() {
           <Tbody>
             <Tr>
               <Td>001</Td>
-              <Td>KCC</Td>
+              <Td>James</Td>
               <Td>Janitor</Td>
               <Td>Active</Td>
               <Td>
@@ -66,7 +65,7 @@ function AdminPwdComponents() {
             </Tr>
             <Tr>
               <Td>001</Td>
-              <Td>KCC</Td>
+              <Td>Joshua</Td>
               <Td>Janitor</Td>
               <Td>Active</Td>
             </Tr>
@@ -79,7 +78,7 @@ function AdminPwdComponents() {
             </Tr>
             <Tr>
               <Td>001</Td>
-              <Td>KCC</Td>
+              <Td>Jaylord</Td>
               <Td>Janitor</Td>
 
               <Td>Active</Td>

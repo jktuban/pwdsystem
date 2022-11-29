@@ -31,17 +31,24 @@ import {
 import { useState } from "react";
 import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-
+import NewSignup from "../components/Pwdsignup";
+import Top_Navigation from "../components/Top_Navigation";
+import "../css/navbar.css";
+import LoginAs from "../components/LoginAs";
 export default function Home(props) {
   const [showPassword, setShowPassword] = useState(false);
+
   const { colorMode, toggleColorMode } = useColorMode();
   const bgcolor = useColorModeValue("teal.400", "whiteAlpha.50");
+
   const fontcolor = useColorModeValue("gray.50", "white");
   return (
     <div>
-      <center>
+      <Top_Navigation />
+      <LoginAs />
+      {/* <center>
         <box>
-          <Tabs isFitted variant="enclosed" width="80%" mt="100px">
+          <Tabs isFitted variant="enclosed" width="4xl" mt={10}>
             <TabList>
               <Tab bg={bgcolor}>
                 <Text color={fontcolor}>Step 1 Profile</Text>
@@ -54,7 +61,7 @@ export default function Home(props) {
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel>
+              <TabPanel px={0} py={0}>
                 <Flex
                   minH={"100vh"}
                   align={"center"}
@@ -154,7 +161,9 @@ export default function Home(props) {
                         <Stack pt={6}>
                           <Text align={"center"}>
                             Already a user?{" "}
-                            <Link color={"blue.400"}>Login</Link>
+                            <Link href="Login" color={"blue.400"}>
+                              Login
+                            </Link>
                           </Text>
                         </Stack>
                       </Stack>
@@ -162,7 +171,7 @@ export default function Home(props) {
                   </Stack>
                 </Flex>
               </TabPanel>
-              <TabPanel>
+              <TabPanel px={0} py={0}>
                 <Flex
                   minH={"100vh"}
                   align={"center"}
@@ -210,7 +219,6 @@ export default function Home(props) {
                                   spacing={[5, 1]}
                                   direction={["row", "column"]}
                                   fontSize={"lg"}
-                                  color={"gray.600"}
                                 >
                                   <Checkbox value="Deaf">
                                     Deaf or hard of Hearing
@@ -239,7 +247,6 @@ export default function Home(props) {
                                   spacing={[5, 1]}
                                   direction={["row", "column"]}
                                   fontSize={"lg"}
-                                  color={"gray.600"}
                                 >
                                   <Checkbox value="Phycosocial Disability">
                                     Phychosocial Disability
@@ -265,7 +272,6 @@ export default function Home(props) {
                                   spacing={[5, 1]}
                                   direction={["row", "column"]}
                                   fontSize={"lg"}
-                                  color={"gray.600"}
                                 >
                                   <Checkbox value="Autism">Autisim</Checkbox>
                                   <Checkbox value="ADHD">ADHD</Checkbox>
@@ -287,7 +293,6 @@ export default function Home(props) {
                                   spacing={[5, 1]}
                                   direction={["row", "column"]}
                                   fontSize={"lg"}
-                                  color={"gray.600"}
                                 >
                                   <Checkbox value="Injury">Injury</Checkbox>
                                   <Checkbox value="Cerebral Palsy">
@@ -325,7 +330,9 @@ export default function Home(props) {
                         <Stack pt={6}>
                           <Text align={"center"}>
                             Already a user?{" "}
-                            <Link color={"blue.400"}>Login</Link>
+                            <Link href="Login" color={"blue.400"}>
+                              Login
+                            </Link>
                           </Text>
                         </Stack>
                       </Stack>
@@ -333,7 +340,7 @@ export default function Home(props) {
                   </Stack>
                 </Flex>
               </TabPanel>
-              <TabPanel>
+              <TabPanel px={0} py={0}>
                 <Flex
                   minH={"100vh"}
                   align={"center"}
@@ -382,7 +389,6 @@ export default function Home(props) {
                                     spacing={[5, 1]}
                                     direction={["row", "column"]}
                                     fontSize={"lg"}
-                                    color={"gray.600"}
                                   >
                                     <Checkbox value="Intellectual">
                                       Enter Personal Skills
@@ -406,7 +412,6 @@ export default function Home(props) {
                                     spacing={[5, 1]}
                                     direction={["row", "column"]}
                                     fontSize={"lg"}
-                                    color={"gray.600"}
                                   >
                                     <Checkbox value="Phycosocial Disability">
                                       Computer Skills
@@ -461,7 +466,7 @@ export default function Home(props) {
             </TabPanels>
           </Tabs>
         </box>
-      </center>
+      </center> */}
     </div>
   );
 }
