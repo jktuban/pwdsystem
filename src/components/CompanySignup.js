@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import {
   Progress,
   Box,
@@ -47,6 +48,7 @@ const Form1 = (props) => {
         fontWeight="normal"
         mb="2%"
       >
+
         Company Registration
         <Text className="content" fontSize={"md"} color={"gray.600"}>
           Enter the login information to your Company account. You will be able
@@ -386,6 +388,8 @@ const Form3 = (props) => {
     </div>
   );
 };
+
+
 
 export default function CompanySignup(props) {
   const { colorMode, toggleColorMode } = useColorMode();

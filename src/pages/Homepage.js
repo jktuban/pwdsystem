@@ -22,7 +22,6 @@ import {
   useColorMode,
   Divider,
 } from "@chakra-ui/react";
-
 import "../css/navbar.css";
 import Body_Jobpost from "../components/Body_Jobpost";
 import WatchVideo from "../components/WatchVideo";
@@ -46,7 +45,7 @@ function Homepage(props) {
 
   const [job, setJob] = useState([]);
   const getJob = () => {
-    axios.get("http://localhost/pwd-backend/get_job.php").then((response) => {
+    axios.get("http://localhost/pwd-backend/get_Job.php").then((response) => {
       setJob(response.data);
     });
   };
@@ -123,9 +122,9 @@ function Homepage(props) {
               <Text as={"span"} color={"orange.400"}>
                 Job Hunting!
               </Text>
-              {/* <p it="transcript">Transcript: {transcript}</p>
-              <button onClick={SpeechRecognition.startListening}>Start</button> */}
-              <div>
+              <p it="transcript">Transcript: {transcript}</p>
+              <button onClick={SpeechRecognition.startListening}>Start</button>
+              {/* <div>
                 <p>Microphone: {listening ? "on" : "off"}</p>
                 <button onClick={SpeechRecognition.startListening}>
                   Start
@@ -133,7 +132,7 @@ function Homepage(props) {
                 <button onClick={SpeechRecognition.stopListening}>Stop</button>
                 <button onClick={resetTranscript}>Reset</button>
                 <p>transcript{transcript}</p>
-              </div>
+              </div> */}
             </Heading>
 
             <div id="target">
@@ -248,10 +247,10 @@ function Homepage(props) {
                 return (
                   <>
                     <Body_Jobpost
-                      title={element.TITTLE}
+                      title={element.TITLE}
+                      company_id={element.COMPANY_ID}
                       description={element.DESCRIPTION}
                       salary={element.SALARY}
-                      company={element.COMPANY}
                     />
                   </>
                 );

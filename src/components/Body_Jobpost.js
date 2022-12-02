@@ -16,12 +16,15 @@ import {
   Input,
   Flex,
   VStack,
+  Toast,
+  useToast,
 } from "@chakra-ui/react";
 import kcc from "../images/kcc.png";
 import PopLogin from "../components/PopLogin";
 import { useSpeechSynthesis } from "react-speech-kit";
 
 function Body_Jobpost(props) {
+  const toast = useToast();
   const [user, setUser] = useState([]);
   const [job, setJob] = useState([]);
   const { speak } = useSpeechSynthesis();
@@ -31,15 +34,15 @@ function Body_Jobpost(props) {
 
   const [fontSize, setFontSize] = useState(16);
 
-  const getJob = () => {
-    axios.get("http://localhost/pwd-backend/get_job.php").then((response) => {
-      setJob(response.data);
-    });
-  };
+  // const getJob = () => {
+  //   axios.get("http://localhost/pwd-backend/get_job.php").then((response) => {
+  //     setJob(response.data);
+  //   });
+  // };
 
-  useEffect(() => {
-    getJob();
-  }, [job]);
+  // useEffect(() => {
+  //   getJob();
+  // }, [job]);
 
   return (
     <div id="target">
@@ -82,7 +85,7 @@ function Body_Jobpost(props) {
                 </Link>
               </Heading>
               <Text className="content" fontWeight={600} color={"gray.600"}>
-                {props.company}
+                {props.company_id}
               </Text>
               <Text
                 color={useColorModeValue("gray.700", "gray.400")}
@@ -164,6 +167,15 @@ function Body_Jobpost(props) {
                   }}
                   _focus={{
                     bg: "blue.500",
+                  }}
+                  onClick={() => {
+                    toast({
+                      title: "Application Send.",
+                      description: "The company has been notified!",
+                      status: "success",
+                      duration: 3000,
+                      isClosable: true,
+                    });
                   }}
                 >
                   Apply

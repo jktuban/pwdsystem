@@ -18,14 +18,9 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 
-import GoogleLogin from "react-google-login";
 import "../css/login.css";
-import { gapi } from "gapi-script";
 
-import loginLogo from "../images/login.png";
-import Glogin from "../components/glogin";
 import NewLogin from "../components/NewLogin";
-import glogout from "../components/glogout";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
@@ -67,13 +62,6 @@ function Login(props) {
       console.log(response.data);
     }
   };
-
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({ clientId: clientId, scope: "" });
-  //   }
-  //   gapi.load("client:aunth2", start);
-  // });
 
   return (
     <div>

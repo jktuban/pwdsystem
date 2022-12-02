@@ -25,7 +25,7 @@ import {
 } from "@chakra-ui/react";
 
 import Sample from "../images/sample.mp4";
-import Glogin from "./glogin";
+import Glogin from "./Glogin";
 import { BsSun, BsMoonStarsFill } from "react-icons/bs";
 
 function PopLogin(props) {

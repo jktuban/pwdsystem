@@ -34,7 +34,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import NewSignup from "../components/Pwdsignup";
 import Top_Navigation from "../components/Top_Navigation";
 import "../css/navbar.css";
-import LoginAs from "../components/LoginAs";
+import SignupAs from "../components/SignupAs";
 export default function Home(props) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -45,7 +45,7 @@ export default function Home(props) {
   return (
     <div>
       <Top_Navigation />
-      <LoginAs />
+      <SignupAs />
       {/* <center>
         <box>
           <Tabs isFitted variant="enclosed" width="4xl" mt={10}>

@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Modal,
   ModalOverlay,
@@ -27,24 +27,25 @@ import {
 import kcc from "../images/kcc.png";
 
 function AddJobPost(props) {
-
   const [TITTLE, setTittle] = useState("");
   const [DESCRIPTION, setDescription] = useState("");
   const [SALARY, setSalary] = useState("");
 
-  
   const addjobpost = () => {
     // let response = api.post('/insert.php', {email: email, password: password});
     // console.log(response)
 
     // REQUEST FOR INSERTION
-    axios.post('http://localhost/pwd-backend/addjobpost.php', {
-        TITTLE:TITTLE, 
-        DESCRIPTION:DESCRIPTION,
-        SALARY:SALARY
-    }).then((response) => {console.log(response.data)});
-}
-
+    axios
+      .post("http://localhost/pwd-backend/addjobpost.php", {
+        TITTLE: TITTLE,
+        DESCRIPTION: DESCRIPTION,
+        SALARY: SALARY,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
 
   const OverlayOne = () => (
     <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) " />
@@ -59,6 +60,7 @@ function AddJobPost(props) {
   return (
     <div>
       <Button
+        colorScheme={"blue"}
         onClick={() => {
           setOverlay(<OverlayOne />);
           onOpen();
@@ -86,19 +88,25 @@ function AddJobPost(props) {
                 focusBorderColor="Teal"
                 variant="flushed"
                 placeholder="Job Tittle"
-                onChange={(e) => {setTittle(e.target.value)}}
+                onChange={(e) => {
+                  setTittle(e.target.value);
+                }}
               />
               <Input
                 focusBorderColor="Teal"
                 variant="flushed"
                 placeholder="Description"
-                onChange={(e) => {setDescription(e.target.value)}}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
               />
               <Input
                 focusBorderColor="Teal"
                 variant="flushed"
                 placeholder="Requirements"
-                onChange={(e) => {setSalary(e.target.value)}}
+                onChange={(e) => {
+                  setSalary(e.target.value);
+                }}
               />
               <HStack>
                 <Menu closeOnSelect={false}>

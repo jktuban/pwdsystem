@@ -300,17 +300,17 @@ const NAV_ITEMS: Array<NavItem> = [
     href: "/",
   },
   ,
-  {
-    label: "Contact us",
-    href: "/contactform",
-  },
+  // {
+  //   label: "Contact us",
+  //   href: "/contactform",
+  // },
   {
     label: "Job Post",
     children: [
       {
         label: "Job Board",
         subLabel: "Find your dream design job",
-        href: "body_jobpost",
+        href: "Body_Jobpost",
       },
       {
         label: "About",

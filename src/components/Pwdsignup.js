@@ -28,6 +28,8 @@ import {
   Radio,
   RadioGroup,
   Center,
+  VStack,
+  Divider,
 } from "@chakra-ui/react";
 
 import SpeechRecognition, {
@@ -36,7 +38,7 @@ import SpeechRecognition, {
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useToast } from "@chakra-ui/react";
 import { BsSun, BsMoonStarsFill } from "react-icons/bs";
-
+import "../css/checkbox.css";
 const Form1 = (props) => {
   const [value, setValue] = useState(
     "Enter the login information to your account. You will be able to create additional information after registering! You can make adjustment of the font size, there is button above. Starting with Fistname, Lastname, Email Address and Password"
@@ -224,7 +226,44 @@ const Form2 = (props) => {
   const bgcolor = useColorModeValue("teal.400", "whiteAlpha.50");
   const fontcolor = useColorModeValue("gray.50", "white");
   const [fontSize, setFontSize] = useState(16);
+  // State with list of all checked item
+  const [checked, setChecked] = useState([]);
 
+  const [Deaf, setDeaf] = useState("You Checked Deaf or hard of Hearing");
+  const { speak } = useSpeechSynthesis();
+  const checkList = [
+    " Deaf or hard of Hearing",
+    " Intellectual Disability",
+    " Learning Disability",
+    " Mental Disability",
+    " Physical Disability",
+    " Phychosocial Disability",
+    " Speech Disability",
+    " Cancer (RA11215)",
+    " Rare Disease(RA10947)",
+  ];
+
+  // Add/Remove checked item from list
+  const handleCheck = (event) => {
+    var updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
+
+  // Generate string of checked items
+  const checkedItems = checked.length
+    ? checked.reduce((total, item) => {
+        return total + " ✅ ," + item;
+      })
+    : "";
+
+  // Return classes based on whether item is checked
+  var isChecked = (item) =>
+    checked.includes(item) ? "checked-item" : "not-checked-item";
   return (
     <div id="target">
       <Button
@@ -258,10 +297,10 @@ const Form2 = (props) => {
       >
         Disability
         <Text className="content" fontSize={fontSize} color={"gray.600"}>
-          Enjoy all of our cool <Link color={"blue.400"}>features</Link> ✌️{" "}
+          Enjoy all of our cool <Link color={"blue.400"}>features</Link> ✌️
         </Text>
       </Heading>
-      <Stack spacing={[5, 1]} direction={["row", "column"]} fontSize={fontSize}>
+      <Stack spacing={[5, 5]} direction={["row", "column"]} fontSize={fontSize}>
         <FormControl as={GridItem} colSpan={[6, 3]}>
           <FormLabel>
             <Text fontSize={fontSize} className="content">
@@ -283,7 +322,58 @@ const Form2 = (props) => {
           <option>Canada</option>
           <option>Mexico</option>
         </Select> */}
-          <CheckboxGroup className="content" colorScheme="green">
+
+          <Box>
+            <div>
+              <div className="checkList">
+                <div>
+                  <Box
+                    className="content"
+                    fontSize={fontSize}
+                    as="button"
+                    borderRadius="md"
+                    bg="teal"
+                    color="white"
+                    px={2}
+                    py={2}
+                    mb={2}
+                  >
+                    Items checked are:
+                    <Box
+                      id="choice"
+                      className="content"
+                      fontSize={fontSize}
+                      as="button"
+                      borderRadius="md"
+                      bg="powderblue"
+                      color="Black"
+                      px={2}
+                      py={2}
+                      border={2}
+                    >{`     ${checkedItems}  `}</Box>
+                  </Box>
+                </div>
+                <div className="list-container">
+                  {checkList.map((item, index) => (
+                    <div className="inside-container" key={index}>
+                      <Box borderRadius="md" px={2} my={2} h={8}>
+                        <Divider />
+                        <input
+                          colorScheme="red"
+                          className="chck"
+                          value={item}
+                          type="checkbox"
+                          onChange={handleCheck}
+                        />
+                        <span className={isChecked(item)}>{item}</span>
+                      </Box>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Box>
+          {/* <CheckboxGroup className="content" colorScheme="green">
             <vStack
               className="content"
               spacing={[10, 1]}
@@ -318,7 +408,7 @@ const Form2 = (props) => {
                 Rare Disease(RA10947)
               </Checkbox>
             </vStack>
-          </CheckboxGroup>
+          </CheckboxGroup> */}
         </FormControl>
         <FormControl className="content" id="Conginital/inborn" isRequired>
           <FormLabel fontSize={fontSize}>Cause of Disability</FormLabel>
@@ -552,7 +642,7 @@ const Form3 = (props) => {
           <FormLabel m="2">Soft Skills</FormLabel>
           <CheckboxGroup colorScheme="green">
             <Stack
-              spacing={[5, 1]}
+              spacing={[5, 2]}
               direction={["row", "column"]}
               fontSize={fontSize}
             >

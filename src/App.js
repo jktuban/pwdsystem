@@ -23,7 +23,7 @@ import AddJobPost from "./components/AddJobPost";
 import AdminPwdComponents from "./components/AdminPwdComponents";
 import CompanyProfile from "./components/CompanyProfile";
 import WatchVideo from "./components/WatchVideo";
-import Glogin from "./components/glogin";
+import Glogin from "./components/Glogin";
 import PopLogin from "./components/PopLogin";
 import ProfilePWD from "./components/ProfilePWD";
 import Contactform from "./components/Contactform";
@@ -32,7 +32,7 @@ import Apply from "./components/Apply";
 import Navigation from "./components/Navigation";
 import Top_Navigation from "./components/Top_Navigation";
 import CompanySignup from "./components/CompanySignup";
-import LoginAs from "./components/LoginAs";
+import SignupAs from "./components/SignupAs";
 import { BrowserRouter } from "react-router-dom";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -41,6 +41,8 @@ import Sample from "./pages/Sample";
 import NewLogin from "./components/NewLogin";
 import Features from "./components/Features";
 import ViewApplicants from "./components/ViewApplicants";
+import Checkbox from "./components/Checkbox";
+import Uploadfile from "./components/Uploadfile";
 function App() {
   // const commands = [
   //   {
@@ -99,10 +101,12 @@ function App() {
           <Route path="/contactform" element={<Contactform />} />
           <Route path="/sendmessage" element={<SendMessage />} />
           <Route path="/apply" element={<Apply />} />
-          <Route path="/loginas" element={<LoginAs />} />
+          <Route path="/signupas" element={<SignupAs />} />
           <Route path="/newlogin" element={<NewLogin />} />
           <Route path="/features" element={<Features />} />
           <Route path="/viewapplicants" element={<ViewApplicants />} />
+          <Route path="/checkbox" element={<Checkbox />} />
+          <Route path="/uploadfile" element={<Uploadfile />} />
 
           {/* {redirect} */}
         </Routes>

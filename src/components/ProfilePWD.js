@@ -329,7 +329,7 @@ export default function ProfilePWD(props) {
               colorScheme="teal"
               variant="outline"
               ml={8}
-              onClick={onClose}
+              onClick={() => this.refs.fileInput.click()}
             >
               Add File
             </Button>

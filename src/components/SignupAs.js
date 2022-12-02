@@ -16,11 +16,11 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import NewLogin from "../components/NewLogin";
+import NewLogin from "./NewLogin";
 import CompanySignup from "./CompanySignup";
 
 import PwdSignup from "./Pwdsignup";
-const LoginAs = () => {
+const SignupAs = () => {
   return (
     <Tabs isFitted variant="soft-rounded">
       <TabList>
@@ -39,4 +39,4 @@ const LoginAs = () => {
   );
 };
 
-export default LoginAs;
+export default SignupAs;
